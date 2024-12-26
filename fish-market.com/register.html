@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        body {
+            background-image: url('https://www.mashed.com/img/gallery/best-and-worst-grocery-stores-to-buy-fish/l-intro-1672069485.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            animation: fadeInBody 1.5s;
+        }
+        
+        @keyframes fadeInBody {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .container {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+            animation: fadeInContainer 2s;
+        }
+
+        @keyframes fadeInContainer {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            animation: fadeInHeader 2.5s;
+        }
+
+        @keyframes fadeInHeader {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            animation: fadeInForm 2s;
+        }
+
+        @keyframes fadeInForm {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            transition: color 0.3s;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: #28a745;
+            box-shadow: 0 0 8px rgba(40, 167, 69, 0.3);
+        }
+
+        .form-group input:focus + label, .form-group textarea:focus + label {
+            color: #28a745;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #28a745;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 10px;
+            animation: fadeInLink 2.5s;
+        }
+
+        @keyframes fadeInLink {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .password-group {
+            display: flex;
+            align-items: center;
+        }
+
+        .password-group input[type="checkbox"] {
+            margin-left: 10px;
+        }
+
+        .password-requirements {
+            font-size: 12px;
+            color: #777;
+            animation: fadeInPasswordRequirements 2.5s;
+        }
+
+        @keyframes fadeInPasswordRequirements {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Register</h2>
+        <form action="register.php" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="image">Upload Profile Photo:</label>
+                <input type="file" id="image" name="image" accept="image/*" required>
+
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" min="18" max="100" required>
+            </div>
+            <div class="form-group">
+                <label for="mobile">Mobile:</label>
+                <input type="tel" id="mobile" name="mobile" pattern="[0-9]{10}" title="Mobile number must be 10 digits" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <textarea id="address" name="address" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <div class="password-group">
+                    <input type="password" id="password" name="password" required>
+                    <input type="checkbox" onclick="togglePasswordVisibility('password')"> Show Password
+                </div>
+                <div class="password-requirements">
+                    Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="confirm_password">Confirm Password:</label>
+                <div class="password-group">
+                    <input type="password" id="confirm_password" name="confirm_password" required>
+                    <input type="checkbox" onclick="togglePasswordVisibility('confirm_password')"> Show Password
+                </div>
+            </div>
+            <button type="submit" name="submit">Register</button>
+        </form>
+        <div class="login-link">
+            <p>Already have an account? <a href="login.html">Login here</a></p>
+        </div>
+    </div>
+    <script>
+        function validateForm() {
+            var email = document.getElementById('email').value;
+            var age = document.getElementById('age').value;
+            var mobile = document.getElementById('mobile').value;
+            var password = document.getElementById('password').value;
+            var confirm_password = document.getElementById('confirm_password').value;
+            var passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}$/;
+            var emailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+            var mobilePattern = /^\d{10}$/;
+
+            if (!emailPattern.test(email)) {
+                alert('Email must end with @gmail.com');
+                return false;
+            }
+
+            if (!mobilePattern.test(mobile)) {
+                alert('Mobile number must be 10 digits');
+                return false;
+            }
+
+            if (age < 18 || age > 100) {
+                alert('Age must be between 18 and 100');
+                return false;
+            }
+
+            if (!passwordPattern.test(password)) {
+                alert('Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.');
+                return false;
+            }
+
+            if (password !== confirm_password) {
+                alert('Passwords do not match.');
+                return false;
+            }
+            return true;
+        }
+
+        function togglePasswordVisibility(id) {
+            var passwordField = document.getElementById(id);
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+            } else {
+                passwordField.type = 'password';
+            }
+        }
+    </script>
+</body>
+</html>

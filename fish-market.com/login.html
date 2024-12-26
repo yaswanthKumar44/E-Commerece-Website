@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        body {
+            background-image: url('https://www.mashed.com/img/gallery/best-and-worst-grocery-stores-to-buy-fish/l-intro-1672069485.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-in-out;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #007bff;
+            animation: slideIn 1s ease-in-out;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            animation: slideIn 1s ease-in-out;
+        }
+        input[type="email"],
+        input[type="password"],
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            animation: slideIn 1s ease-in-out;
+        }
+        input[type="email"],
+        input[type="password"] {
+            background-color: #f9f9f9;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+        .register-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .register-link a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .register-link a:hover {
+            color: #0056b3;
+        }
+        input[type="checkbox"] {
+            margin-top: 5px;
+            appearance: none; /* Removes default checkbox appearance */
+            -webkit-appearance: none; /* For older versions of Safari */
+            -moz-appearance: none; /* For older versions of Firefox */
+            border: 1px solid #ccc;
+            width: 20px;
+            height: 20px;
+            border-radius: 3px;
+            position: relative;
+            cursor: pointer;
+        }
+        input[type="checkbox"]:checked {
+            background-color: #007bff;
+        }
+        input[type="checkbox"]:checked::after {
+            content: '\2714'; /* Checkmark symbol */
+            font-size: 14px;
+            color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        input[type="checkbox"]:checked::before {
+            content: '';
+            width: 10px;
+            height: 5px;
+            border-bottom: 2px solid white;
+            border-left: 2px solid white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <form action="login.php" method="post">
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <div class="password-container">
+                    <input type="password" id="password" name="password" required>
+                    <label for="show-password" class="show-password-label">
+                        <input type="checkbox" id="show-password" onclick="togglePasswordVisibility('password')"> Show Password
+                    </label>
+                </div>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <div class="register-link">
+            <p>New user? <a href="register.html">Register now</a></p>
+        </div>
+    </div>
+    <script>
+        function togglePasswordVisibility(id) {
+            var passwordField = document.getElementById(id);
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+            } else {
+                passwordField.type = 'password';
+            }
+        }
+    </script>
+</body>
+</html>

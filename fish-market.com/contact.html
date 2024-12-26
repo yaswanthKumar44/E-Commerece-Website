@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Fish Store</title>
+    <style>
+        body {
+            background-image: url('https://th.bing.com/th/id/R.450fcd0a3d5457e321b413955ebab93a?rik=BOdDuAfFBmXgMQ&riu=http%3a%2f%2fc8.alamy.com%2fcomp%2fGWE6F4%2fseafood-copy-space-background-with-fresh-raw-prawns-clams-mussels-GWE6F4.jpg&ehk=bzqQjsq7Av5l5FQESm7N%2bd3cET0wGL0jwkpB6LvsL1g%3d&risl=&pid=ImgRaw&r=0');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .header, .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            animation: fadeIn 1s;
+        }
+        .nav {
+            display: flex;
+            justify-content: center;
+            background-color: #444;
+            flex-wrap: wrap;
+            animation: slideInFromLeft 1s;
+        }
+        .nav a {
+            padding: 14px 20px;
+            text-decoration: none;
+            color: white;
+            transition: background-color 0.3s;
+            animation: fadeIn 2s;
+        }
+        .nav a.active {
+            background-color: #007bff;
+            animation: pulse 1s infinite;
+        }
+        .nav a:hover {
+            background-color: #555;
+            animation: shake 0.5s;
+        }
+        .container {
+            padding: 20px;
+            animation: slideInFromRight 1s;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            animation: fadeInAndScale 1s;
+        }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            animation: bounceIn 1s;
+        }
+        form label {
+            display: block;
+            margin: 10px 0 5px;
+            animation: slideInFromLeft 1s;
+        }
+        form input, form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            transition: border-color 0.3s;
+            animation: slideInFromRight 1s;
+        }
+        form input:focus, form textarea:focus {
+            border-color: #28a745;
+            animation: pulse 0.5s infinite;
+        }
+        form button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            animation: bounceIn 1s;
+        }
+        form button:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+            animation: flipIn 1s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideInFromLeft {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0); }
+        }
+        @keyframes slideInFromRight {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+        @keyframes fadeInAndScale {
+            from { opacity: 0; transform: scale(0); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes bounceIn {
+            from { transform: scale(0.5); }
+            to { transform: scale(1); }
+        }
+        @keyframes flipIn {
+            from { transform: rotateY(-90deg); }
+            to { transform: rotateY(0); }
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+            20%, 40%, 60%, 80% { transform: translateX(10px); }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        @keyframes flash {
+            0%, 50%, 100% { opacity: 1; }
+            25%, 75% { opacity: 0; }
+        }
+        @keyframes rubberBand {
+            0% { transform: scale(1); }
+            30% { transform: scale(1.25, 0.75); }
+            40% { transform: scale(0.75, 1.25); }
+            50% { transform: scale(1.15, 0.85); }
+            65% { transform: scale(0.95, 1.05); }
+            75% { transform: scale(1.05, 0.95); }
+            100% { transform: scale(1); }
+        }
+        @keyframes tada {
+            0% { transform: scale(1); }
+            10%, 20% { transform: scale(0.9) rotate(-3deg); }
+            30%, 50%, 70%, 90% { transform: scale(1.1) rotate(3deg); }
+            40%, 60%, 80% { transform: scale(1.1) rotate(-3deg); }
+            100% { transform: scale(1) rotate(0); }
+        }
+        @keyframes wobble {
+            0% { transform: translateX(0%); }
+            15% { transform: translateX(-25%) rotate(-5deg); }
+            30% { transform: translateX(20%) rotate(3deg); }
+            45% { transform: translateX(-15%) rotate(-3deg); }
+            60% { transform: translateX(10%) rotate(2deg); }
+            75% { transform: translateX(-5%) rotate(-1deg); }
+            100% { transform: translateX(0%) rotate(0deg); }
+        }
+        @keyframes jello {
+            0%, 11.1%, 100% { transform: translate3d(0, 0, 0); }
+            22.2% { transform: skewX(-12.5deg) skewY(-12.5deg); }
+            33.3% { transform: skewX(6.25deg) skewY(6.25deg); }
+            44.4% { transform: skewX(-3.125deg) skewY(-3.125deg); }
+            55.5% { transform: skewX(1.5625deg) skewY(1.5625deg); }
+            66.6% { transform: skewX(-0.78125deg) skewY(-0.78125deg); }
+            77.7% { transform: skewX(0.390625deg) skewY(0.390625deg); }
+            88.8% { transform: skewX(-0.1953125deg) skewY(-0.1953125deg); }
+        }
+        @keyframes swing {
+            20% { transform: rotate(15deg); }
+            40% { transform: rotate(-10deg); }
+            60% { transform: rotate(5deg); }
+            80% { transform: rotate(-5deg); }
+            100% { transform: rotate(0deg); }
+        }
+        .nav a.active {
+            animation: flash 1.5s infinite;
+        }
+        .footer {
+            animation: pulse 1.5s infinite;
+        }
+        .header:hover {
+            animation: rubberBand 1s;
+        }
+        form:hover {
+            animation: tada 1s;
+        }
+        .container:hover {
+            animation: wobble 1s;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Contact Us</h1>
+    </div>
+
+    <div class="nav">
+        <a href="home.php">Home</a>
+        <a href="products.php">Products</a>
+        <a href="cart.php">Cart</a>
+        <a href="orders.php">Orders</a>
+        <a href="profile.php">Profile</a>
+        <a href="contact.html" class="active">Contact</a>
+        <a href="logout.php">Logout</a>
+    </div>
+
+    <div class="container">
+        <h2>Contact Form</h2>
+        <form action="contact.php" method="post">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Fish Store. All rights reserved.</p>
+    </div>
+
+</body>
+</html>
